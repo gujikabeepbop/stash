@@ -13,6 +13,8 @@ import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { getStashboxBase } from "src/utils/stashbox";
 import { ExternalLink } from "src/components/Shared/ExternalLink";
 
+import { baseURL } from "src/core/createClient";
+
 interface IStudioName {
   studio: GQL.ScrapedStudio | GQL.SlimStudioDataFragment;
   id: string | undefined | null;
@@ -60,7 +62,7 @@ const StudioResult: React.FC<IStudioResultProps> = ({
   const stashboxStudioPrefix = endpoint
     ? `${getStashboxBase(endpoint)}studios/`
     : undefined;
-  const studioURLPrefix = "/studios/";
+  const studioURLPrefix = `${baseURL}studios/`;
 
   const handleSelect = (studios: SelectObject[]) => {
     if (studios.length) {

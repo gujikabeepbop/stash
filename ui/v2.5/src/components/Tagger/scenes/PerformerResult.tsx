@@ -14,6 +14,8 @@ import {
 import { getStashboxBase } from "src/utils/stashbox";
 import { ExternalLink } from "src/components/Shared/ExternalLink";
 
+import { baseURL } from "src/core/createClient";
+
 interface IPerformerName {
   performer: GQL.ScrapedPerformer | Performer;
   id: string | undefined | null;
@@ -79,7 +81,7 @@ const PerformerResult: React.FC<IPerformerResultProps> = ({
   const stashboxPerformerPrefix = endpoint
     ? `${getStashboxBase(endpoint)}performers/`
     : undefined;
-  const performerURLPrefix = "/performers/";
+  const performerURLPrefix = `${baseURL}performers/`;
 
   function selectPerformer(selected: Performer | undefined) {
     setSelectedPerformer(selected);
